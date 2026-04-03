@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lilie Bloom — Você merece florescer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* ── Lilie Bloom Brand Colors ── */
+  --wine:       #8B1A4A;       /* vinho principal da logo */
+  --wine-deep:  #6B1238;       /* vinho escuro */
+  --wine-light: #A8336A;       /* vinho médio */
+  --gold:       #C9A84C;       /* dourado da logo */
+  --gold-light: #E2C97E;       /* dourado claro */
+  --gold-pale:  #F5EDD0;       /* dourado suavíssimo */
+  --cream:      #FBF8F2;       /* creme fundo */
+  --warm:       #F7F0E8;       /* creme mais quente */
+  --cream-dark: #EDE4D8;       /* creme médio */
+  --charcoal:   #2C2C2C;
+  --mid:        #6A6A6A;
+  --soft:       #A0A0A0;
+  --white:      #FFFFFF;
+  /* aliases para não quebrar código existente */
+  --rose:       #C9A84C;
+  --rose-deep:  #8B1A4A;
+  --rose-soft:  #F5EDD0;
+  --rose-pale:  #FBF5EC;
+  --sage:       #C9A84C;
+  --sage-light: #E2C97E;
+  --sage-dark:  #8B1A4A;
+  --sage-pale:  #F7F0E8;
+  --border-rose: rgba(139,26,74,0.15);
+  --border-sage: rgba(201,168,76,0.25);
+  --shadow:     0 8px 40px rgba(139,26,74,0.1);
+  --shadow-lg:  0 20px 60px rgba(139,26,74,0.18);
+  --r:          18px;
+  --r-sm:       10px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden;line-height:1.7;cursor:none;}
+
+/* CURSOR */
+.cursor{position:fixed;width:12px;height:12px;background:var(--wine);border-radius:50%;pointer-events:none;z-index:9999;transition:transform 0.15s ease;mix-blend-mode:multiply;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transition:all 0.25s ease;mix-blend-mode:multiply;}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.15;}
+h1{font-size:clamp(3rem,7vw,6.5rem);}
+h2{font-size:clamp(2rem,4vw,3.5rem);}
+h3{font-size:clamp(1.3rem,2.2vw,1.9rem);}
+p{font-size:clamp(0.92rem,1.4vw,1rem);color:var(--mid);}
+
+/* UTILITIES */
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(1.2rem,5vw,3rem);}
+.section{padding:clamp(5rem,10vw,9rem) 0;}
+.tag{display:inline-block;font-size:0.68rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--wine);background:rgba(139,26,74,0.08);padding:6px 18px;border-radius:100px;margin-bottom:1.2rem;}
+.tag-sage{color:var(--gold);background:rgba(201,168,76,0.12);}
+
+/* PETAL SVG DECORATION */
+.petal-deco{position:absolute;pointer-events:none;opacity:0.12;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 0;transition:all 0.4s ease;}
+nav.scrolled{background:rgba(251,248,242,0.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.2);padding:0.8rem 0;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-style:italic;color:white;text-decoration:none;transition:color 0.3s;white-space:nowrap;}
+nav.scrolled .nav-logo{color:var(--wine);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.8);text-decoration:none;transition:color 0.3s;font-weight:500;}
+nav.scrolled .nav-links a{color:var(--mid);}
+.nav-links a:hover,.nav-links a.active{color:var(--wine)!important;}
+.nav-wa{display:flex;align-items:center;gap:8px;font-size:0.82rem;font-weight:500;padding:9px 22px;background:var(--wine);color:var(--gold-light);border-radius:100px;text-decoration:none;transition:all 0.3s;white-space:nowrap;border:1px solid rgba(201,168,76,0.3);}
+.nav-wa:hover{background:var(--wine-deep);transform:translateY(-1px);}
+@media(max-width:700px){.nav-links{display:none;}.nav-logo{font-size:1.3rem;}}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(145deg,#3d0820 0%,#6B1238 45%,#8B1A4A 100%);}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 70% 30%,rgba(201,168,76,0.18),transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(139,26,74,0.3),transparent 55%);}
+
+/* Floating petals animation */
+.petals-wrap{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:petalFall linear infinite;}
+@keyframes petalFall{
+  0%{transform:translateY(-10%) rotate(0deg);opacity:0;}
+  10%{opacity:0.6;}
+  90%{opacity:0.3;}
+  100%{transform:translateY(110vh) rotate(720deg) translateX(80px);opacity:0;}
+}
+
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(61,8,32,0.82) 40%,rgba(61,8,32,0.15) 100%);z-index:1;}
+.hero-content{position:relative;z-index:2;padding:9rem 0 6rem;max-width:680px;}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:2rem;}
+.hero-eyebrow-line{width:36px;height:1px;background:rgba(255,255,255,0.4);}
+.hero-eyebrow span{font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.55);}
+.hero h1{color:white;margin-bottom:0.5rem;font-weight:400;}
+.hero h1 em{font-style:italic;color:var(--rose);display:block;}
+.hero-tagline{font-size:clamp(1rem,1.8vw,1.2rem);color:rgba(255,255,255,0.6);margin:1.5rem 0 2.5rem;line-height:1.85;max-width:480px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:'Jost',sans-serif;font-weight:500;font-size:0.95rem;padding:14px 32px;border-radius:100px;text-decoration:none;border:none;cursor:none;transition:all 0.3s ease;}
+.btn-rose{background:var(--wine);color:var(--gold-light);box-shadow:0 8px 30px rgba(139,26,74,0.4);border:1px solid rgba(201,168,76,0.3);}
+.btn-rose:hover{background:var(--wine-deep);transform:translateY(-2px);}
+.btn-outline-white{background:transparent;color:white;border:1.5px solid rgba(201,168,76,0.5);}
+.btn-outline-white:hover{background:rgba(201,168,76,0.12);}
+.btn-sage{background:var(--wine);color:var(--gold-light);box-shadow:0 8px 30px rgba(139,26,74,0.3);border:1px solid rgba(201,168,76,0.3);}
+.btn-sage:hover{background:var(--wine-deep);transform:translateY(-2px);}
+
+/* Scroll indicator */
+.scroll-ind{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.35);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,rgba(255,255,255,0.35),transparent);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+/* ─── PAGE SYSTEM ─── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ─── SECTION HEADER ─── */
+.sec-header{text-align:center;max-width:600px;margin:0 auto 4rem;}
+.sec-header.center{text-align:center;margin:0 auto 4rem;}
+.sec-header h2{color:var(--charcoal);margin-bottom:1rem;}
+.sec-header p{font-size:1rem;}
+
+/* ─── FLORAL DIVIDER ─── */
+.floral-divider{text-align:center;padding:1.5rem 0;font-size:1.4rem;color:var(--rose);letter-spacing:0.6rem;opacity:0.5;}
+
+/* ─── CATALOG GRID ─── */
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;}
+.product-card{background:white;border-radius:var(--r);overflow:hidden;border:1px solid var(--border-rose);box-shadow:0 4px 25px rgba(139,26,74,0.06);transition:all 0.35s ease;position:relative;}
+.product-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+
+/* Elegant placeholder */
+.product-img{height:280px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.product-img-bg{position:absolute;inset:0;}
+.product-emoji{font-size:5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.15));transition:transform 0.4s ease;}
+.product-card:hover .product-emoji{transform:scale(1.1) rotate(-5deg);}
+.product-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;background:white;color:var(--wine);box-shadow:0 2px 12px rgba(0,0,0,0.1);}
+.product-badge.novo{background:var(--wine);color:var(--gold-light);}
+.product-badge.destaque{background:var(--gold);color:white;}
+
+.product-body{padding:1.6rem 1.8rem 1.8rem;}
+.product-name{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--charcoal);margin-bottom:0.3rem;}
+.product-desc{font-size:0.87rem;color:var(--soft);line-height:1.65;margin-bottom:1.2rem;}
+.product-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.product-price{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--wine);font-weight:500;}
+.product-price small{font-size:0.9rem;vertical-align:top;margin-top:4px;display:inline-block;font-family:'Jost',sans-serif;font-weight:300;}
+.btn-pedido{display:flex;align-items:center;gap:7px;font-size:0.8rem;font-weight:500;padding:10px 20px;background:var(--gold-pale);color:var(--wine);border-radius:100px;text-decoration:none;transition:all 0.3s;cursor:none;border:1px solid rgba(201,168,76,0.3);font-family:'Jost',sans-serif;}
+.btn-pedido:hover{background:var(--wine);color:var(--gold-light);}
+.btn-pedido svg{width:16px;height:16px;flex-shrink:0;}
+
+/* Categories filter */
+.cat-filter{display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:3rem;}
+.cat-btn{font-size:0.8rem;font-weight:500;letter-spacing:0.05em;padding:8px 22px;border-radius:100px;border:1.5px solid var(--border-rose);background:transparent;color:var(--mid);cursor:none;transition:all 0.25s;font-family:'Jost',sans-serif;}
+.cat-btn.active,.cat-btn:hover{background:var(--wine);color:var(--gold-light);border-color:var(--wine);}
+
+/* ─── EVENTOS ─── */
+.kombi-hero{position:relative;background:linear-gradient(135deg,#2d0818,#6B1238,#8B1A4A);padding:clamp(5rem,10vw,8rem) 0;overflow:hidden;text-align:center;}
+.kombi-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(201,168,76,0.12),transparent 65%);}
+.kombi-placeholder{width:clamp(280px,50vw,500px);margin:0 auto 2.5rem;position:relative;z-index:1;}
+.kombi-body{position:relative;z-index:1;}
+.kombi-body h2{color:white;margin-bottom:1rem;}
+.kombi-body p{color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 2.5rem;}
+
+/* Kombi illustration */
+.kombi-svg-wrap{position:relative;display:inline-block;}
+.kombi-glow{position:absolute;inset:-20%;background:radial-gradient(ellipse,rgba(201,168,76,0.25),transparent 65%);border-radius:50%;animation:glow 3s ease-in-out infinite;}
+@keyframes glow{0%,100%{opacity:0.6;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;margin-top:3.5rem;}
+.event-card{background:white;border-radius:var(--r);overflow:hidden;border:1px solid var(--border-rose);box-shadow:0 4px 25px rgba(139,26,74,0.06);transition:all 0.35s;}
+.event-card:hover{transform:translateY(-7px);box-shadow:0 20px 60px rgba(139,26,74,0.15);}
+.event-img{height:240px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;overflow:hidden;}
+.event-body{padding:1.6rem 1.8rem 1.8rem;}
+.event-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);background:rgba(201,168,76,0.12);padding:4px 14px;border-radius:100px;margin-bottom:0.8rem;display:inline-block;}
+.event-name{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--charcoal);margin-bottom:0.5rem;}
+.event-desc{font-size:0.87rem;color:var(--soft);line-height:1.65;margin-bottom:1.3rem;}
+.event-price-row{display:flex;align-items:center;justify-content:space-between;}
+.event-price{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--wine);}
+.btn-event{font-size:0.8rem;font-weight:500;padding:9px 20px;background:var(--gold-pale);color:var(--wine);border-radius:100px;text-decoration:none;transition:all 0.3s;cursor:none;border:1px solid rgba(201,168,76,0.3);font-family:'Jost',sans-serif;}
+.btn-event:hover{background:var(--wine);color:var(--gold-light);}
+
+/* Gallery kombi */
+.kombi-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;margin-top:3.5rem;}
+.kombi-gallery-card{border-radius:var(--r);overflow:hidden;height:220px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;transition:transform 0.3s;}
+.kombi-gallery-card:hover{transform:scale(1.03);}
+.kombi-gallery-card::after{content:attr(data-label);position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(transparent,rgba(61,8,32,0.7));color:var(--gold-light);font-size:0.82rem;letter-spacing:0.05em;}
+
+/* ─── ABOUT STRIP ─── */
+.about-strip{background:var(--gold-pale);padding:clamp(4rem,8vw,7rem) 0;position:relative;overflow:hidden;}
+.about-strip::before{content:'🌸';position:absolute;right:-2rem;top:-3rem;font-size:12rem;opacity:0.06;transform:rotate(-20deg);}
+.about-strip::after{content:'✨';position:absolute;left:-2rem;bottom:-3rem;font-size:12rem;opacity:0.05;transform:rotate(20deg);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+@media(max-width:768px){.about-inner{grid-template-columns:1fr;gap:2.5rem;}}
+.about-text h2{color:var(--charcoal);margin-bottom:1.2rem;}
+.about-text p{margin-bottom:1rem;}
+.about-nums{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.about-num{text-align:center;background:white;border-radius:var(--r-sm);padding:1.5rem;border:1px solid rgba(201,168,76,0.25);}
+.about-num strong{display:block;font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--wine);line-height:1;}
+.about-num span{font-size:0.8rem;color:var(--soft);margin-top:4px;display:block;}
+
+/* ─── TESTIMONIALS ─── */
+.testimonials{background:var(--warm);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:3.5rem;}
+.testi-card{background:white;border-radius:var(--r);padding:2rem;border:1px solid rgba(201,168,76,0.2);box-shadow:0 4px 20px rgba(139,26,74,0.06);}
+.testi-stars{color:var(--gold);font-size:1rem;margin-bottom:0.8rem;letter-spacing:2px;}
+.testi-text{font-size:0.93rem;color:var(--mid);line-height:1.75;margin-bottom:1.2rem;font-style:italic;}
+.testi-author{font-size:0.82rem;font-weight:500;color:var(--charcoal);}
+.testi-author span{color:var(--soft);font-weight:300;}
+
+/* ─── SOCIAL FLOATING ─── */
+.social-float{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:10px;}
+.social-btn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.3s;box-shadow:0 4px 15px rgba(0,0,0,0.15);}
+.social-btn svg{width:20px;height:20px;fill:white;}
+.social-btn:hover{transform:scale(1.15);}
+.sb-ig{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+.sb-fb{background:#1877f2;}
+.sb-tk{background:#000;}
+.sb-wa{background:#25d366;}
+@media(max-width:600px){.social-float{right:0.8rem;top:auto;bottom:5rem;transform:none;flex-direction:row;}}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:2rem;left:2rem;z-index:200;}
+.wa-float a{width:56px;height:56px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(37,211,102,0.4);text-decoration:none;animation:waPulse 3s ease-in-out infinite;}
+.wa-float a:hover{transform:scale(1.1);}
+.wa-float svg{width:26px;height:26px;fill:white;}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 25px rgba(37,211,102,0.4);}50%{box-shadow:0 8px 40px rgba(37,211,102,0.65);}}
+
+/* ─── FOOTER ─── */
+footer{background:#1a0010;color:rgba(255,255,255,0.35);text-align:center;padding:2.5rem;font-size:0.82rem;line-height:2;}
+footer span{color:var(--gold-light);}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* Logo float animation */
+@keyframes logoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+
+/* ─── FADE ANIMATIONS ─── */
+.fade{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}
+
+/* ─── GRADIENT BACKGROUNDS for placeholders (brand palette) ─── */
+.bg-rose1{background:linear-gradient(135deg,#e8c4d4,#c9607e,#8B1A4A);}
+.bg-rose2{background:linear-gradient(135deg,#f5dce8,#d4889e,#A8336A);}
+.bg-rose3{background:linear-gradient(135deg,#f0d4de,#cc8098,#9a4060);}
+.bg-sage1{background:linear-gradient(135deg,#f5ecd0,#d4a84c,#8B6020);}
+.bg-sage2{background:linear-gradient(135deg,#f0e8cc,#c9a040,#7a5818);}
+.bg-mixed{background:linear-gradient(135deg,#e8d0e0,#c9a84c,#8B1A4A);}
+.bg-yellow{background:linear-gradient(135deg,#fff3cc,#ffe08a,#ffc940);}
+.bg-purple{background:linear-gradient(135deg,#e8d5f5,#c9a0e8,#7040a0);}
+.bg-white1{background:linear-gradient(135deg,#f5edd0,#e8d4a0,#c9a870);}
+.bg-kombi1{background:linear-gradient(135deg,#3d0820,#6B1238,#8B1A4A);}
+.bg-kombi2{background:linear-gradient(135deg,#2d1a0e,#5a3010,#8a5820);}
+.bg-kombi3{background:linear-gradient(135deg,#1a1030,#3a2060,#6a4090);}
+.bg-kombi4{background:linear-gradient(135deg,#0e1a10,#204030,#406050);}
+
+/* Responsive */
+@media(max-width:480px){.catalog-grid{grid-template-columns:1fr;}.events-grid{grid-template-columns:1fr;}.about-nums{grid-template-columns:1fr 1fr;}.kombi-gallery{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo" onclick="showPage('home');return false;">
+      <img src="/mnt/user-data/uploads/1000225965.png" alt="Lilie Bloom" id="navLogoImg"
+        style="height:52px;width:52px;object-fit:cover;border-radius:50%;border:2px solid rgba(201,168,76,0.6);box-shadow:0 2px 12px rgba(139,26,74,0.3);transition:all 0.3s;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home');return false;" class="active" id="nav-home">Início</a></li>
+      <li><a href="#" onclick="showPage('catalogo');return false;" id="nav-catalogo">Catálogo</a></li>
+      <li><a href="#" onclick="showPage('eventos');return false;" id="nav-eventos">Eventos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+    <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido!" target="_blank" class="nav-wa">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Quero florescer
+    </a>
+  </div>
+</nav>
+
+<!-- ══════════════ PAGE: HOME ══════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="petals-wrap" id="petalsWrap"></div>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span>Um convite para viver com mais beleza</span>
+        </div>
+        <!-- LOGO no hero -->
+        <div style="margin-bottom:1.8rem;">
+          <img src="/mnt/user-data/uploads/1000225965.png" alt="Lilie Bloom"
+            style="width:clamp(140px,22vw,200px);height:clamp(140px,22vw,200px);object-fit:cover;border-radius:50%;border:3px solid rgba(201,168,76,0.5);box-shadow:0 8px 40px rgba(139,26,74,0.4),0 0 60px rgba(201,168,76,0.15);animation:logoFloat 4s ease-in-out infinite;" />
+        </div>
+        <p class="hero-tagline">Flores para lembrar que você merece leveza.<br/>Cada arranjo é um ritual de beleza — feito com intenção, entregue com alma.</p>
+        <div class="hero-btns">
+          <a href="#" onclick="showPage('catalogo');return false;" class="btn btn-rose">Explorar arranjos 🌸</a>
+          <a href="#" onclick="showPage('eventos');return false;" class="btn btn-outline-white">Eventos & Kombi 🚐</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-ind">
+      <div class="scroll-line"></div>
+      Deslize
+    </div>
+  </section>
+
+  <!-- DESTAQUES RÁPIDOS -->
+  <section class="section" style="background:var(--warm);">
+    <div class="container">
+      <div class="sec-header fade">
+        <div class="tag">Arranjos com intenção</div>
+        <h2>Criados para iluminar o seu dia</h2>
+        <p>Que seus dias sejam feitos de beleza simples e intenções verdadeiras. Cada flor aqui foi escolhida para isso.</p>
+      </div>
+      <div class="catalog-grid">
+
+        <div class="product-card fade d1">
+          <div class="product-img bg-rose1">
+            <div class="product-badge novo">Novo</div>
+            <span class="product-emoji">🌹</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Ritual do Amor</div>
+            <div class="product-desc">24 rosas vermelhas premium com folhagem e fita de cetim. Um gesto que transforma o dia de quem recebe — e de quem entrega.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>189</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Ritual%20do%20Amor!" target="_blank" class="btn-pedido">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Quero esse
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d2">
+          <div class="product-img bg-mixed">
+            <div class="product-badge destaque">Destaque</div>
+            <span class="product-emoji">💐</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Jardim Interior</div>
+            <div class="product-desc">Mix vibrante de gérberas, lisianthus e folhagens tropicais. Para lembrar que a beleza existe em cada detalhe — inclusive dentro de você.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>149</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Jardim%20Interior!" target="_blank" class="btn-pedido">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Quero esse
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d3">
+          <div class="product-img bg-rose2">
+            <span class="product-emoji">🌸</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Despertar Rosé</div>
+            <div class="product-desc">Rosas rosé com ranúnculos e eucalipto. Delicado como uma manhã tranquila — para quem merece um recomeço bonito.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>129</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Despertar%20Rosé!" target="_blank" class="btn-pedido">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Quero esse
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="#" onclick="showPage('catalogo');return false;" class="btn btn-rose">Explorar catálogo completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO STRIP -->
+  <section style="background:var(--wine);padding:clamp(3.5rem,7vw,5.5rem) 0;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(201,168,76,0.08),transparent 65%);pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;max-width:760px;">
+      <p style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3vw,2.2rem);font-style:italic;color:rgba(255,255,255,0.92);line-height:1.65;margin-bottom:1.5rem;font-weight:300;">
+        "A casa floresce quando você floresce.<br/>
+        Que seus dias sejam feitos de beleza simples<br/>
+        e intenções verdadeiras."
+      </p>
+      <div style="display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem;">
+        <div style="text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:0.3rem;">🕯️</div>
+          <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.7);">Rituais de beleza</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:0.3rem;">🌿</div>
+          <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.7);">Ambientes que acolhem</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:0.3rem;">✨</div>
+          <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.7);">Cotidiano poético</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:1.4rem;margin-bottom:0.3rem;">🌸</div>
+          <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.7);">Autocuidado com intenção</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-strip" id="sobre">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-text fade">
+          <div class="tag">Nossa essência</div>
+          <h2>Nascemos para celebrar mulheres que florescem</h2>
+          <p>A Lilie Bloom nasceu de um desejo profundo: transformar o simples ato de presentear ou decorar em um gesto carregado de intenção. Acreditamos que flores não são adornos — são extensões do movimento interno de quem floresce.</p>
+          <p>Cada arranjo é pensado como um símbolo — de afeto, renovação, leveza ou celebração. Produzido com sensibilidade artesanal para a mulher moderna: forte, sensível e sempre em expansão.</p>
+          <a href="https://wa.me/5511999999999" target="_blank" class="btn btn-rose" style="margin-top:1rem;">Conversar com a gente 💬</a>
+        </div>
+        <div class="about-nums fade d2">
+          <div class="about-num"><strong>2.1k</strong><span>Mulheres que florescem com a gente</span></div>
+          <div class="about-num"><strong>500+</strong><span>Momentos de beleza entregues</span></div>
+          <div class="about-num"><strong>5★</strong><span>Em cada entrega, com alma</span></div>
+          <div class="about-num"><strong>3 anos</strong><span>Cultivando intenção e leveza</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE PILLARS -->
+  <section class="section" style="background:var(--cream);padding-top:2rem;">
+    <div class="container">
+      <div class="sec-header center fade" style="max-width:580px;margin:0 auto 3.5rem;text-align:center;">
+        <div class="tag">Um convite para viver diferente</div>
+        <h2>O que a Lilie Bloom representa</h2>
+        <p>Mais do que flores — entregamos sensações, presença e uma forma mais bonita de viver.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;" class="fade">
+        <div style="text-align:center;padding:2rem 1.5rem;background:white;border-radius:var(--r);border:1px solid rgba(201,168,76,0.15);box-shadow:var(--shadow);">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🏡</div>
+          <h3 style="font-size:1.1rem;color:var(--wine);margin-bottom:0.5rem;">A casa como extensão da alma</h3>
+          <p style="font-size:0.88rem;">Ambientes que inspiram paz, harmonia e acolhimento. Detalhes que transformam o espaço — e o humor.</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1.5rem;background:white;border-radius:var(--r);border:1px solid rgba(201,168,76,0.15);box-shadow:var(--shadow);">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🌅</div>
+          <h3 style="font-size:1.1rem;color:var(--wine);margin-bottom:0.5rem;">Pequenas pausas que iluminam</h3>
+          <p style="font-size:0.88rem;">Rotinas suaves e conscientes. O autocuidado não é luxo — é uma necessidade profunda que alimenta a alma.</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1.5rem;background:white;border-radius:var(--r);border:1px solid rgba(201,168,76,0.15);box-shadow:var(--shadow);">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">💫</div>
+          <h3 style="font-size:1.1rem;color:var(--wine);margin-bottom:0.5rem;">Beleza no cotidiano</h3>
+          <p style="font-size:0.88rem;">O dia mais bonito não precisa de uma ocasião especial. Ele só precisa de intenção — e de uma flor no lugar certo.</p>
+        </div>
+        <div style="text-align:center;padding:2rem 1.5rem;background:white;border-radius:var(--r);border:1px solid rgba(201,168,76,0.15);box-shadow:var(--shadow);">
+          <div style="font-size:2.5rem;margin-bottom:1rem;">🌺</div>
+          <h3 style="font-size:1.1rem;color:var(--wine);margin-bottom:0.5rem;">Florescer por dentro e por fora</h3>
+          <p style="font-size:0.88rem;">Cada mulher carrega dentro de si um jardim em expansão. As flores são a extensão visível desse movimento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="sec-header fade" style="text-align:center;max-width:580px;margin:0 auto 3.5rem;">
+        <div class="tag">Experiências reais</div>
+        <h2>Momentos que marcaram</h2>
+        <p>Cada entrega carrega uma história. Essas são algumas das que mais nos emocionaram.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card fade d1">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Quando as flores chegaram, eu fiquei em silêncio por um momento. Não era só um buquê — era a sensação de ser vista e valorizada. A Lilie Bloom entende isso de um jeito que poucos entendem."</div>
+          <div class="testi-author">Ana Clara · <span>São Paulo</span></div>
+        </div>
+        <div class="testi-card fade d2">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Pedi pra decorar meu aniversário e o espaço virou outro. Foi mais que decoração — foi uma atmosfera. Minha casa respirou diferente naquele dia. Eu chorei de emoção."</div>
+          <div class="testi-author">Mariana S. · <span>Cliente desde o início</span></div>
+        </div>
+        <div class="testi-card fade d3">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Presenteei minha esposa com um arranjo da Lilie Bloom e ela colocou no quarto. Disse que toda manhã que acorda e vê as flores, ela lembra que merece coisas bonitas. Isso não tem preço."</div>
+          <div class="testi-author">Roberto M. · <span>Google Reviews</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-home -->
+
+<!-- ══════════════ PAGE: CATÁLOGO ══════════════ -->
+<div id="page-catalogo" class="page">
+  <div style="height:90px;background:var(--rose-pale);"></div>
+
+  <section class="section" style="padding-top:3rem;">
+    <div class="container">
+      <div class="sec-header fade">
+        <div class="tag">Cada arranjo, uma intenção</div>
+        <h2>Encontre o que o seu momento pede</h2>
+        <p>Flores para lembrar que você merece leveza. Cada peça é preparada com sensibilidade artesanal — para acolher, celebrar ou simplesmente iluminar o dia.</p>
+      </div>
+
+      <div class="cat-filter fade">
+        <button class="cat-btn active" onclick="filterCat(this,'todos')">Todos</button>
+        <button class="cat-btn" onclick="filterCat(this,'buques')">Buquês</button>
+        <button class="cat-btn" onclick="filterCat(this,'arranjos')">Arranjos</button>
+        <button class="cat-btn" onclick="filterCat(this,'cestas')">Cestas & Kits</button>
+        <button class="cat-btn" onclick="filterCat(this,'plantas')">Plantas</button>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid">
+
+        <!-- BUQUÊS -->
+        <div class="product-card fade" data-cat="buques">
+          <div class="product-img bg-rose1">
+            <div class="product-badge novo">Novo</div>
+            <span class="product-emoji">🌹</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Ritual do Amor</div>
+            <div class="product-desc">24 rosas vermelhas com folhagem e cetim. Um gesto que transforma o dia — de quem recebe e de quem entrega.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>189</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Buquê%20Apaixonado!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d1" data-cat="buques">
+          <div class="product-img bg-rose2">
+            <span class="product-emoji">🌸</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Despertar Rosé</div>
+            <div class="product-desc">Rosas rosé com ranúnculos e eucalipto. Delicado como uma manhã tranquila — para quem merece um recomeço bonito.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>129</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Sonho%20Rosé!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d2" data-cat="buques">
+          <div class="product-img bg-purple">
+            <span class="product-emoji">💜</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Encanto Lavanda</div>
+            <div class="product-desc">Lavandas, lisianthus roxo e baby's breath. Sofisticado, aromático e feito para quem aprecia a poesia dos detalhes.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>145</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Encanto%20Lavanda!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARRANJOS -->
+        <div class="product-card fade" data-cat="arranjos">
+          <div class="product-img bg-mixed">
+            <div class="product-badge destaque">Destaque</div>
+            <span class="product-emoji">💐</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Jardim Interior</div>
+            <div class="product-desc">Mix vibrante de gérberas, lisianthus e folhagens tropicais. Para lembrar que a beleza existe em cada detalhe — inclusive dentro de você.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>149</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Jardim%20da%20Alegria!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d1" data-cat="arranjos">
+          <div class="product-img bg-sage1">
+            <span class="product-emoji">🌿</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Presença Verde</div>
+            <div class="product-desc">Arranjo tropical com orquídeas brancas, folhagens exóticas e suculentas. Elegante como a mulher que escolhe viver com harmonia.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>169</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Verde%20Natureza!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d2" data-cat="arranjos">
+          <div class="product-img bg-rose3">
+            <span class="product-emoji">🌺</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Liberdade Silvestre</div>
+            <div class="product-desc">Margaridas, craspédia e flores silvestres no estilo rústico. Para a mulher que carrega natureza no olhar.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>109</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20Flores%20do%20Campo!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CESTAS -->
+        <div class="product-card fade" data-cat="cestas">
+          <div class="product-img bg-white1">
+            <div class="product-badge novo">Novo</div>
+            <span class="product-emoji">🧺</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Ritual Completo</div>
+            <div class="product-desc">Flores + vela aromática + chocolate belga + cartão personalizado. O autocuidado transformado em presente — para você ou para quem você ama.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>229</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20a%20Cesta%20Bem-Estar!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLANTAS -->
+        <div class="product-card fade" data-cat="plantas">
+          <div class="product-img bg-sage2">
+            <span class="product-emoji">🪴</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Jardim em Miniatura</div>
+            <div class="product-desc">3 suculentas em vasinhos artesanais de cerâmica. Um pedacinho de jardim dentro de casa — para durar muito mais que um dia.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>89</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20o%20Kit%20Suculentas!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card fade d1" data-cat="plantas">
+          <div class="product-img bg-sage1">
+            <span class="product-emoji">🌱</span>
+          </div>
+          <div class="product-body">
+            <div class="product-name">Orquídea Presença</div>
+            <div class="product-desc">Orquídea branca em vaso decorativo com cachepô. Uma presença silenciosa de beleza que transforma qualquer ambiente.</div>
+            <div class="product-footer">
+              <div class="product-price"><small>R$</small>119</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20a%20Orquídea!" target="_blank" class="btn-pedido"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Pedir</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end catalog-grid -->
+    </div>
+  </section>
+</div><!-- end page-catalogo -->
+
+<!-- ══════════════ PAGE: EVENTOS ══════════════ -->
+<div id="page-eventos" class="page">
+
+  <!-- KOMBI HERO -->
+  <div class="kombi-hero">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="kombi-body">
+        <div class="tag tag-sage" style="background:rgba(201,168,76,0.15);color:var(--gold-light);">Experiências florais únicas</div>
+        <h2 style="color:white;margin-bottom:1rem;">Nossa Kombi Amarela<br/>transforma qualquer momento 🚐🌸</h2>
+        <p>Uma floricultura sobre rodas, com alma. Chegamos com flores, beleza e aquele charme inconfundível — para que seu evento respire harmonia, leveza e intenção em cada detalhe.</p>
+        <a href="https://wa.me/5511999999999?text=Quero%20saber%20sobre%20a%20Kombi%20para%20eventos!" target="_blank" class="btn btn-sage">Criar esse momento juntas</a>
+      </div>
+
+      <!-- Kombi Illustration SVG -->
+      <div style="margin-top:3rem;">
+        <div class="kombi-svg-wrap">
+          <div class="kombi-glow"></div>
+          <svg viewBox="0 0 520 280" width="100%" style="max-width:520px;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.4));" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body -->
+            <rect x="30" y="90" width="420" height="150" rx="20" fill="#F5C842"/>
+            <rect x="30" y="90" width="420" height="80" rx="20" fill="#F5C842"/>
+            <!-- Roof rack with flowers -->
+            <rect x="50" y="75" width="380" height="20" rx="5" fill="#D4A830"/>
+            <!-- Flowers on roof -->
+            <text x="80" y="73" font-size="22">🌸</text>
+            <text x="130" y="73" font-size="22">🌹</text>
+            <text x="180" y="73" font-size="22">💐</text>
+            <text x="230" y="73" font-size="22">🌺</text>
+            <text x="280" y="73" font-size="22">🌸</text>
+            <text x="330" y="73" font-size="22">🌼</text>
+            <text x="380" y="73" font-size="22">🌹</text>
+            <!-- Windows front -->
+            <rect x="50" y="102" width="100" height="65" rx="8" fill="#A8D8EA" opacity="0.9"/>
+            <!-- Windows mid -->
+            <rect x="170" y="102" width="100" height="65" rx="8" fill="#A8D8EA" opacity="0.9"/>
+            <rect x="285" y="102" width="80" height="65" rx="8" fill="#A8D8EA" opacity="0.9"/>
+            <!-- Side door -->
+            <rect x="170" y="175" width="210" height="60" rx="6" fill="#E8B830" stroke="#D4A830" stroke-width="2"/>
+            <!-- VW circle -->
+            <circle cx="90" cy="210" r="25" fill="#D4A830"/>
+            <text x="90" y="217" text-anchor="middle" font-size="18" fill="white" font-weight="bold">VW</text>
+            <!-- Bumper -->
+            <rect x="35" y="232" width="410" height="12" rx="6" fill="#D4A830"/>
+            <!-- Wheels -->
+            <circle cx="110" cy="248" r="28" fill="#2C2C2C"/>
+            <circle cx="110" cy="248" r="18" fill="#555"/>
+            <circle cx="110" cy="248" r="8" fill="#F5C842"/>
+            <circle cx="380" cy="248" r="28" fill="#2C2C2C"/>
+            <circle cx="380" cy="248" r="18" fill="#555"/>
+            <circle cx="380" cy="248" r="8" fill="#F5C842"/>
+            <!-- Text on van -->
+            <text x="260" y="208" text-anchor="middle" font-family="serif" font-size="14" fill="#7a3030" font-style="italic" font-weight="bold">Lilie Bloom 🌸</text>
+            <!-- Headlights -->
+            <ellipse cx="48" cy="155" rx="14" ry="20" fill="#fffde0" stroke="#D4A830" stroke-width="2"/>
+            <ellipse cx="452" cy="155" rx="14" ry="20" fill="#fffde0" stroke="#D4A830" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERIA KOMBI -->
+  <section class="section" style="background:var(--warm);">
+    <div class="container">
+      <div class="sec-header fade">
+        <div class="tag tag-sage">Nossa Kombi em movimento</div>
+        <h2>Memórias que ficam na alma</h2>
+        <p>Cada evento que a Kombi chega, algo especial acontece. A beleza toma conta — e o espaço passa a respirar intenção.</p>
+      </div>
+      <div class="kombi-gallery fade">
+        <div class="kombi-gallery-card bg-kombi1" data-label="Casamento | 2024">🌸</div>
+        <div class="kombi-gallery-card bg-kombi2" data-label="Aniversário Jardim">🌿</div>
+        <div class="kombi-gallery-card bg-yellow" data-label="Festa Botânica">🌼</div>
+        <div class="kombi-gallery-card bg-rose1" data-label="Chá de Bebê Rosa">💐</div>
+        <div class="kombi-gallery-card bg-kombi3" data-label="Corporativo | Outono">🍂</div>
+        <div class="kombi-gallery-card bg-kombi4" data-label="Noite Especial">✨</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACOTES DE EVENTO -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-header fade">
+        <div class="tag tag-sage">Pacotes de experiência</div>
+        <h2>Cada evento, uma história de beleza</h2>
+        <p>Não entregamos apenas decoração — criamos atmosferas. Ambientes que acolhem, que inspiram e que as pessoas não esquecem.</p>
+      </div>
+      <div class="events-grid">
+
+        <div class="event-card fade d1">
+          <div class="event-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">
+            <span style="font-size:4rem;">💍</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Casamentos</div>
+            <div class="event-name">Pacote União</div>
+            <div class="event-desc">Decoração completa com Kombi, arranjos de mesa, arco floral, buquê da noiva e corsage. O dia mais bonito da sua vida, harmonizado com intenção e delicadeza.</div>
+            <div class="event-price-row">
+              <div class="event-price">A consultar</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20criar%20meu%20casamento%20com%20a%20Lilie%20Bloom!" target="_blank" class="btn-event">Criar juntas</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade d2">
+          <div class="event-img" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">
+            <span style="font-size:4rem;">🎂</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Aniversários</div>
+            <div class="event-name">Pacote Florescer</div>
+            <div class="event-desc">Kombi decorada + 5 arranjos de mesa + painel floral para foto + entrega e montagem. Porque celebrar a si mesma é o maior ritual de autocuidado que existe.</div>
+            <div class="event-price-row">
+              <div class="event-price">A partir de <strong style="font-size:1.8rem;">R$890</strong></div>
+              <a href="https://wa.me/5511999999999?text=Quero%20esse%20pacote%20para%20meu%20aniversário!" target="_blank" class="btn-event">Quero esse</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade d3">
+          <div class="event-img" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);">
+            <span style="font-size:4rem;">🍼</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Chá de Bebê</div>
+            <div class="event-name">Pacote Nova Vida</div>
+            <div class="event-desc">Decoração delicada com Kombi, centros de mesa florais, painel e mimo para os convidados. Para receber uma nova vida com toda a beleza que ela merece.</div>
+            <div class="event-price-row">
+              <div class="event-price">A partir de <strong style="font-size:1.8rem;">R$650</strong></div>
+              <a href="https://wa.me/5511999999999?text=Quero%20esse%20pacote%20para%20meu%20chá!" target="_blank" class="btn-event">Quero esse</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade">
+          <div class="event-img" style="background:linear-gradient(135deg,#e8eaf6,#c5cae9);">
+            <span style="font-size:4rem;">🏢</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Corporativo</div>
+            <div class="event-name">Pacote Presença</div>
+            <div class="event-desc">Flores para recepções, lançamentos e confraternizações. Porque um ambiente que respira beleza comunica cuidado — com a marca e com as pessoas.</div>
+            <div class="event-price-row">
+              <div class="event-price">A consultar</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20flores%20para%20meu%20evento%20corporativo!" target="_blank" class="btn-event">Criar juntas</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade d1">
+          <div class="event-img bg-yellow">
+            <span style="font-size:4rem;">🌻</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Formaturas</div>
+            <div class="event-name">Pacote Conquista</div>
+            <div class="event-desc">Buquê da formanda, decoração da festa e Kombi como cenário para fotos. Para celebrar com toda a beleza uma vitória que foi construída com alma.</div>
+            <div class="event-price-row">
+              <div class="event-price">A partir de <strong style="font-size:1.8rem;">R$480</strong></div>
+              <a href="https://wa.me/5511999999999?text=Quero%20esse%20pacote%20para%20minha%20formatura!" target="_blank" class="btn-event">Quero esse</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card fade d2">
+          <div class="event-img" style="background:linear-gradient(135deg,#fff8e1,#ffecb3);">
+            <span style="font-size:4rem;">💛</span>
+          </div>
+          <div class="event-body">
+            <div class="event-tag">Personalizado</div>
+            <div class="event-name">Pacote Intenção</div>
+            <div class="event-desc">Tem um momento único em mente? A gente cria algo feito só pra ele. Traga sua ideia — e a gente transforma em experiência poética.</div>
+            <div class="event-price-row">
+              <div class="event-price">A consultar</div>
+              <a href="https://wa.me/5511999999999?text=Quero%20criar%20algo%20personalizado%20com%20a%20Lilie%20Bloom!" target="_blank" class="btn-event">Criar juntas</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- end page-eventos -->
+
+<!-- SOCIAL FLOAT -->
+<div class="social-float">
+  <a href="https://instagram.com" target="_blank" class="social-btn sb-ig" title="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a href="https://facebook.com" target="_blank" class="social-btn sb-fb" title="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+  <a href="https://tiktok.com" target="_blank" class="social-btn sb-tk" title="TikTok">
+    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+  </a>
+</div>
+
+<!-- WA FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/5511999999999?text=Olá,%20vim%20pelo%20site%20da%20Lilie%20Bloom%20e%20quero%20florescer%20também!" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- CLOSING BRAND SECTION -->
+<section style="background:linear-gradient(160deg,#1a0010 0%,#3d0820 50%,#2a100a 100%);padding:clamp(5rem,10vw,8rem) 0;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 40%,rgba(201,168,76,0.1),transparent 60%);pointer-events:none;"></div>
+  <!-- decorative petals -->
+  <div style="position:absolute;top:10%;left:5%;font-size:3rem;opacity:0.07;transform:rotate(-20deg);pointer-events:none;">🌸</div>
+  <div style="position:absolute;bottom:10%;right:5%;font-size:3rem;opacity:0.07;transform:rotate(15deg);pointer-events:none;">🌺</div>
+  <div style="position:absolute;top:40%;left:2%;font-size:2rem;opacity:0.05;pointer-events:none;">✨</div>
+  <div style="position:absolute;top:40%;right:2%;font-size:2rem;opacity:0.05;pointer-events:none;">✨</div>
+
+  <div class="container" style="position:relative;z-index:1;max-width:700px;">
+    <img src="/mnt/user-data/uploads/1000225965.png" alt="Lilie Bloom"
+      style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:2px solid rgba(201,168,76,0.4);box-shadow:0 0 40px rgba(201,168,76,0.2);margin-bottom:2rem;" />
+
+    <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:1.2rem;">Um convite</p>
+
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);color:white;font-weight:400;margin-bottom:1.5rem;line-height:1.2;">
+      Você merece<br/><em style="font-style:italic;color:var(--gold-light);">florescer.</em>
+    </h2>
+
+    <p style="color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto 1rem;font-size:1rem;line-height:1.85;">
+      Não apenas com flores — mas com leveza, com intenção, com a certeza de que os detalhes da sua vida importam e merecem ser bonitos.
+    </p>
+    <p style="color:rgba(201,168,76,0.5);font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;margin-bottom:3rem;">
+      Por dentro, por fora e dentro de casa.
+    </p>
+
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/5511999999999?text=Olá!%20Vim%20pelo%20site%20da%20Lilie%20Bloom%20e%20quero%20fazer%20um%20pedido%20especial!" target="_blank"
+        style="display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-weight:500;font-size:1rem;padding:15px 36px;border-radius:100px;background:#25D366;color:white;text-decoration:none;box-shadow:0 8px 30px rgba(37,211,102,0.3);transition:all 0.3s;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero o meu arranjo
+      </a>
+      <a href="#" onclick="showPage('catalogo');return false;"
+        style="display:inline-flex;align-items:center;gap:10px;font-family:'Jost',sans-serif;font-weight:500;font-size:1rem;padding:15px 36px;border-radius:100px;background:transparent;color:rgba(201,168,76,0.8);border:1.5px solid rgba(201,168,76,0.3);text-decoration:none;transition:all 0.3s;">
+        Explorar o catálogo 🌸
+      </a>
+    </div>
+
+    <!-- redes sociais inline -->
+    <div style="display:flex;gap:1.5rem;justify-content:center;margin-top:3rem;">
+      <a href="https://instagram.com" target="_blank"
+        style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;transition:transform 0.3s;text-decoration:none;"
+        title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://facebook.com" target="_blank"
+        style="width:42px;height:42px;border-radius:50%;background:#1877f2;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;text-decoration:none;"
+        title="Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+      <a href="https://tiktok.com" target="_blank"
+        style="width:42px;height:42px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;transition:transform 0.3s;text-decoration:none;"
+        title="TikTok">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <img src="/mnt/user-data/uploads/1000225965.png" alt="Lilie Bloom" style="width:80px;height:80px;object-fit:cover;border-radius:50%;border:2px solid rgba(201,168,76,0.4);margin-bottom:1rem;opacity:0.9;" />
+    <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-style:italic;color:var(--gold-light);margin-bottom:0.3rem;">Lilie Bloom</p>
+    <p>Você merece florescer — por dentro, por fora e dentro de casa. 🌸</p>
+    <p style="margin-top:0.5rem;">
+      <a href="https://instagram.com">Instagram</a> &nbsp;·&nbsp;
+      <a href="https://facebook.com">Facebook</a> &nbsp;·&nbsp;
+      <a href="https://tiktok.com">TikTok</a> &nbsp;·&nbsp;
+      <a href="https://wa.me/5511999999999">WhatsApp</a>
+    </p>
+    <p style="margin-top:1rem;font-size:0.75rem;">© 2025 Lilie Bloom · Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cursor.style.left=(mx-6)+'px'; cursor.style.top=(my-6)+'px';
+});
+function animRing(){
+  rx+=(mx-rx-18)*0.12; ry+=(my-ry-18)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a,button,.cat-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(1.8)';ring.style.transform='scale(1.5)';});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)';});
+});
+
+// NAV SCROLL
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+// PAGE SYSTEM
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  ['home','catalogo','eventos'].forEach(n=>{
+    document.getElementById('nav-'+n)?.classList.toggle('active',n===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(observeFade,100);
+}
+
+// PETALS
+function createPetals(){
+  const wrap=document.getElementById('petalsWrap');
+  if(!wrap)return;
+  const colors=['rgba(201,168,76,0.7)','rgba(226,201,126,0.6)','rgba(139,26,74,0.5)','rgba(245,237,208,0.6)','rgba(168,51,106,0.45)'];
+  for(let i=0;i<18;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    const size=Math.random()*14+8;
+    p.style.cssText=`
+      width:${size}px;height:${size*1.4}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*10+8}s;
+      animation-delay:${Math.random()*8}s;
+      border-radius:${Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%'};
+    `;
+    wrap.appendChild(p);
+  }
+}
+createPetals();
+
+// FADE OBSERVER
+function observeFade(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade:not(.in)').forEach(el=>obs.observe(el));
+}
+observeFade();
+
+// CATALOG FILTER
+function filterCat(btn,cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#catalogGrid .product-card').forEach(card=>{
+    if(cat==='todos'||card.dataset.cat===cat){
+      card.style.display=''; 
+    } else {
+      card.style.display='none';
+    }
+  });
+}
+</script>
+</body>
+</html>
